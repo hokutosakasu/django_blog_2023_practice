@@ -1,0 +1,54 @@
+{% extends 'blog/layout.html' %} 
+
+{% block title %} {{title}} 
+{% endblock %} 
+
+{% block content %}
+<body class="container">
+  {% comment %} <h1 class="display-4 text-primary mb-4">{{title}}</h1> {% endcomment %}
+  <p>いつか役に立つかもしれない情報をお届けしたい！</p>
+  <br>
+  <br>
+
+  <li class="list-group-item list-group-item-secondary ">
+  <p>Blog Archives</p>
+  </li>
+
+  {% comment %} 記事 Start {% endcomment %}
+  <br>
+  {% comment %} views.py index 記事取得 {% endcomment %}
+  {% for articles_data in page_obj %} 
+    <li class="list-group-item" id="category">
+      {% comment %} 作成日  {% endcomment %}
+      <p>{{articles_data.created_date|date:'Y-m-d'}}</p>
+      
+      {% comment %} 画像  {% endcomment %}
+      <a href="detail/{{articles_data.id}}">
+        <img src="/{{articles_data.image}}" alt="画像なし" width="100" />
+      </a>
+      
+      {% comment %} タイトル  {% endcomment %}
+      <a href="detail/{{articles_data.id}}">
+        <b>{{articles_data.title}}</b>
+      </a>
+      
+      {% comment %} カテゴリー  {% endcomment %}
+      <a href="category/{{articles_data.category}}">
+          {% comment %}  ↓のaタグでもいける？
+          <a href="{% url 'category' articles_data.category %}">
+          {% endcomment %}
+          <div class="font-category" id="index-category">
+            <p>{{articles_data.category}}</p>
+          </div>
+      </a>
+    </li>
+  {% endfor %}
+
+  {% comment %} ページネーション {% endcomment %}
+  {% include 'blog/paginate.html' %}
+  
+{% endblock %}
+  {% comment %} 記事 End {% endcomment %}
+
+
+</body>

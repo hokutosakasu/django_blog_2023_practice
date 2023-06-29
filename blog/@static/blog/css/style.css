@@ -1,0 +1,30 @@
+body{
+    color: #333333;
+    font-size: 16pt;
+}
+
+/* a{
+    color: red;
+    text-decoration: none;
+} */
+
+.ulclass {
+    color: blue;
+    background-color: darkgrey;
+    /* background: green; */
+}
+
+.ulclass li{
+    /* list-style: none; */
+    /* color: red; */
+    display: inline;
+    /* background-color: aqua; */
+}
+
+
+/* .list-group-item  {
+    color: blue;
+   
+} */
+
+

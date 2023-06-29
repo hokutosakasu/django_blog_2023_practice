@@ -1,0 +1,46 @@
+
+
+{% extends 'blog/layout.html' %}
+
+{% block title %} {{category_data.category}} | {{title}} 
+{% endblock %}
+
+{% block content %}
+<body class="container">
+    <p>category検索結果です</p>
+    <br>
+    <b>「{{category_data.category}}」 の検索結果！！！！</b>
+    <br><br>
+
+    {% for articles_data in page_obj %}
+        <li class="list-group-item" id="category">
+            {% comment %} 作成日  {% endcomment %}
+            <p>{{articles_data.created_date|date:'Y-m-d'}}</p>
+
+            {% comment %} 画像  {% endcomment %}
+            <a href={% url 'detail'  articles_data.id %}>
+                <img src="/{{articles_data.image}}" alt="画像なし" width="100" >
+            </a>
+            
+            {% comment %} タイトル  {% endcomment %}
+            <a href={% url 'detail'  articles_data.id %}>
+                <b>{{articles_data.title}}</b>
+            </a>
+
+            {% comment %} カテゴリー  {% endcomment %}
+            {% comment %} <a href="detail/{{item.id}}"> {% endcomment %}
+            {% comment %} <a href={% url 'detail'  articles_data.id %}> {% endcomment %}
+                {% comment %} <a href="category/{{articles_data.category}}"> {% endcomment %}
+                <a href={% url 'category'  articles_data.category %}>
+                <div class="font-category" id="index-category">
+                    <p>{{articles_data.category}}</p>
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+    
+    {% comment %} ページネーション {% endcomment %}
+    {% include 'blog/paginate.html' %}
+{% endblock %}
+
+

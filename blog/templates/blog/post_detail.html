@@ -1,0 +1,18 @@
+
+{% extends 'blog/layout.html' %}
+{% load markdown_extras %}
+
+{% block title %} 
+{{post_detail.title}} | {{ title }}
+{% endblock %}
+
+{% block content %}
+<body class="container">
+   <p class="display-4 text-secondary mb-4" style="text-align:center"><font size='20'>{{ object.title}} </font></p> 
+   <br><br>
+<tr>
+    {{ object.text|markdown|safe }}
+<br>
+</tr>
+</body>
+{% endblock %}

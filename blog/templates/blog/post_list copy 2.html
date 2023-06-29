@@ -1,0 +1,27 @@
+
+{% extends 'blog/layout.html' %}
+{% block title %} {{title}} {% endblock %}
+
+
+{% block content %}
+<body class="container">
+    <h1 class="display-4 text-primary mb-4">投稿記事一覧</h1>
+{% for item  in post_list %}
+<!-- <li class="list-group-item py-1 bg-dark text-danger col-4">{{item.title}}</li> -->
+<li class="list-group-item" id="category">
+    <a href="detail/{{item.id}}">
+        <img src="/{{item.image}}" alt="画像なし" width="100" >
+    </a>
+    <a href="detail/{{item.id}}">
+        <b>{{item.title}}</b>
+    </a>
+    <br>
+    
+    
+
+</li>
+
+{% endfor %}
+
+</body>
+{% endblock %}
